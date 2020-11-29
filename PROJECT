@@ -1,0 +1,7 @@
+domain: hello.k8s.io
+repo: github.com/ibestgo/hello-operator
+resources:
+- group: mygroup
+  kind: MyKind
+  version: v1
+version: "2"
