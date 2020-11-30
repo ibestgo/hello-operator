@@ -4,5 +4,5 @@ metadata:
   name: mykind-sample
 spec:
   # Add fields here
-  message: "Hello world from Baechul Kim"
+  message: "Hello world2 from Baechul Kim"
   image: alpine
