@@ -8,13 +8,38 @@ metadata:
   creationTimestamp: null
   name: mykinds.mygroup.hello.k8s.io
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .spec.image
+    description: Image to Run
+    name: Image
+    type: string
+  - JSONPath: .spec.message
+    description: Message to display
+    format: password
+    name: Message
+    type: string
+  - JSONPath: .status.printed
+    description: Printed Status
+    name: Printed
+    type: boolean
+  - JSONPath: .status.printeddate
+    description: Printed Date
+    name: PrintedDate
+    type: date
   group: mygroup.hello.k8s.io
   names:
+    categories:
+    - messaging
     kind: MyKind
     listKind: MyKindList
     plural: mykinds
+    shortNames:
+    - hi
+    - him
+    - himsg
     singular: mykind
   scope: Namespaced
+  subresources: {}
   validation:
     openAPIV3Schema:
       description: MyKind is the Schema for the mykinds API
@@ -39,7 +64,7 @@ spec:
               type: string
             message:
               description: Message is a text to be displayed by MyKind Pods
-              maxLength: 160
+              maxLength: 30
               type: string
           type: object
         status:

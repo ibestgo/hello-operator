@@ -29,7 +29,7 @@ type MyKindSpec struct {
 	// Important: Run "make" to regenerate code after modifying this file
 
 	// Message is a text to be displayed by MyKind Pods
-	// +kubebuilder:validation:MaxLength:=160
+	// +kubebuilder:validation:MaxLength:=30
 	Message string `json:"message,omitempty"`
 
 	// Docker image to be run by the MyKind Pods
@@ -46,6 +46,11 @@ type MyKindStatus struct {
 }
 
 // +kubebuilder:object:root=true
+// +kubebuilder:resource:categories=messaging,path=mykinds,singular=mykind,shortName=hi;him;himsg
+// +kubebuilder:printcolumn:name="Image",type="string",JSONPath=".spec.image",description="Image to Run"
+// +kubebuilder:printcolumn:name="Message",type="string",JSONPath=".spec.message", format=password,description="Message to display"
+// +kubebuilder:printcolumn:name="Printed",type="boolean",JSONPath=".status.printed",description="Printed Status"
+// +kubebuilder:printcolumn:name="PrintedDate",type="date",JSONPath=".status.printeddate",description="Printed Date"
 
 // MyKind is the Schema for the mykinds API
 type MyKind struct {
